@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['votting-f5bc12b0d74d.herokuapp.com','127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'whitenoise.runserver_nostatic',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -47,12 +48,12 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'account.middleware.AccountCheckMiddleWare',
 ]
 
@@ -77,6 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'e_voting.wsgi.application'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
